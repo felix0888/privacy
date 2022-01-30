@@ -16,7 +16,7 @@ async function main() {
   console.log("Account balance after Privacy deploy: ", (await deployer.getBalance()).toString());
 
   const PrivacyAttack = await ethers.getContractFactory("PrivacyAttack");
-  const privacyAttack = await Privacy.deploy();
+  const privacyAttack = await PrivacyAttack.deploy();
   console.log("PrivacyAttack address: ", await privacyAttack.address);
   console.log("Account balance after PrivacyAttack deploy: ", (await deployer.getBalance()).toString());
 }
