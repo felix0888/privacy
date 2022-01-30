@@ -14,6 +14,11 @@ async function main() {
   const privacy = await Privacy.deploy();
   console.log("Privacy address: ", await privacy.address);
   console.log("Account balance after Privacy deploy: ", (await deployer.getBalance()).toString());
+
+  const PrivacyAttack = await ethers.getContractFactory("PrivacyAttack");
+  const privacyAttack = await Privacy.deploy();
+  console.log("PrivacyAttack address: ", await privacyAttack.address);
+  console.log("Account balance after PrivacyAttack deploy: ", (await deployer.getBalance()).toString());
 }
 
 // We recommend this pattern to be able to use async/await everywhere
