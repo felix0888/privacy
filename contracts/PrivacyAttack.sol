@@ -18,8 +18,8 @@ contract PrivacyAttack {
         attacker = msg.sender;
     }
   
-    function attack (address _victim, bytes16 _key) external onlyAttacker {
+    function attack (address _victim, bytes32 _key) external onlyAttacker {
         IPrivacy privacy = IPrivacy(_victim);
-        privacy.unlock(_key);
+        privacy.unlock(bytes16(_key));
     }
 }

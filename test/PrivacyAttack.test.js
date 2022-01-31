@@ -29,7 +29,7 @@ describe("Privacy", function () {
   describe("#attack", function () {
     it("should be reverted if non-attacker tries", async function () {
       await expect(
-        privacyAttack.connect(alice).attack(privacy.address, data2.slice(0, 16))
+        privacyAttack.connect(alice).attack(privacy.address, data2)
       ).to.be.revertedWith(
         "PrivacyAttack: NOT_OWNER"
       );
@@ -37,7 +37,7 @@ describe("Privacy", function () {
 
     it("should unlock Privacy contract if valid password given", async function () {
       const data2State = await ethers.provider.getStorageAt(privacy.address, 5);
-      await privacyAttack.connect(attacker).attack(privacy.address, data2State.slice(0, 34));
+      await privacyAttack.connect(attacker).attack(privacy.address, data2State);
       expect(await privacy.locked()).to.equal(false);
     });
   });
